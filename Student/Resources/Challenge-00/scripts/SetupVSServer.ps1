@@ -29,11 +29,22 @@ $proc | Wait-Process
 #>
 
 # Install Microsoft .Net Core 7.0.102
-$exeDotNetTemp = [System.IO.Path]::GetTempPath().ToString() + "dotnet-sdk-7.0.102-win-x64.exe"
+# $exeDotNetTemp = [System.IO.Path]::GetTempPath().ToString() + "dotnet-sdk-7.0.102-win-x64.exe"
+# if (Test-Path $exeDotNetTemp) { Remove-Item $exeDotNetTemp -Force }
+# # Download file from Microsoft Downloads and save to local temp file (%LocalAppData%/Temp/2)
+# $exeFileNetCore = [System.IO.Path]::GetTempFileName() | Rename-Item -NewName "dotnet-sdk-7.0.102-win-x64.exe" -PassThru
+# Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/6ba69569-ee5e-460e-afd8-79ae3cd4617b/16a385a4fab2c5806f50f49f5581b4fd/dotnet-sdk-7.0.102-win-x64.exe" -OutFile $exeFileNetCore
+# # Run the exe with arguments
+# $proc = (Start-Process -FilePath $exeFileNetCore.Name.ToString() -ArgumentList ('/install','/quiet') -WorkingDirectory $exeFileNetCore.Directory.ToString() -Passthru)
+# $proc | Wait-Process 
+
+# Install Microsoft .Net Core 8.0.0
+Write-Debug -Message "about to install .NET Core Hosting 8.0.0..."
+$exeDotNetTemp = [System.IO.Path]::GetTempPath().ToString() + "dotnet-hosting-8.0.0-win.exe"
 if (Test-Path $exeDotNetTemp) { Remove-Item $exeDotNetTemp -Force }
 # Download file from Microsoft Downloads and save to local temp file (%LocalAppData%/Temp/2)
-$exeFileNetCore = [System.IO.Path]::GetTempFileName() | Rename-Item -NewName "dotnet-sdk-7.0.102-win-x64.exe" -PassThru
-Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/6ba69569-ee5e-460e-afd8-79ae3cd4617b/16a385a4fab2c5806f50f49f5581b4fd/dotnet-sdk-7.0.102-win-x64.exe" -OutFile $exeFileNetCore
+$exeFileNetCore = [System.IO.Path]::GetTempFileName() | Rename-Item -NewName "dotnet-hosting-8.0.0-win.exe" -PassThru
+Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/2a7ae819-fbc4-4611-a1ba-f3b072d4ea25/32f3b931550f7b315d9827d564202eeb/dotnet-hosting-8.0.0-win.exe" -OutFile $exeFileNetCore
 # Run the exe with arguments
 $proc = (Start-Process -FilePath $exeFileNetCore.Name.ToString() -ArgumentList ('/install','/quiet') -WorkingDirectory $exeFileNetCore.Directory.ToString() -Passthru)
 $proc | Wait-Process 
@@ -83,6 +94,21 @@ $replace = '    "CatalogConnection": "Server=' + $SQLServername + ';Integrated S
 $find1 = '    "IdentityConnection": "Server=(localdb)\\mssqllocaldb;Integrated Security=true;Initial Catalog=Microsoft.eShopOnWeb.Identity;"'
 $replace1 = '    "IdentityConnection": "Server=' + $SQLServername + ';Integrated Security=false;User ID=' + $SQLusername + ';Password=' + $SQLpassword + ';Initial Catalog=Microsoft.eShopOnWeb.Identity;TrustServerCertificate=True"'
 (Get-Content $appsettingsfile).replace($find1, $replace1) | Set-Content $appsettingsfile -Force
+
+#modify Program.cs,  remove KeyVault reference and fix connection strings
+$programFile = 'C:\eshoponweb\eShopOnWeb-main\src\Web\Program.cs'
+$find = 'var credential = new ChainedTokenCredential'
+$replace = '//var credential = new ChainedTokenCredential'
+(Get-Content $programFile).replace($find, $replace) | Set-Content $programFile -Force
+$find1 = 'builder.Configuration.AddAzureKeyVault'
+$replace1 = '//builder.Configuration.AddAzureKeyVault'
+(Get-Content $programFile).replace($find1, $replace1) | Set-Content $programFile -Force
+$find2 = 'var connectionString = builder.Configuration[builder.Configuration["AZURE_SQL_CATALOG_CONNECTION_STRING_KEY"] ?? ""];'
+$replace2 = 'var connectionString = builder.Configuration["ConnectionStrings:CatalogConnection"] ?? "";'
+(Get-Content $programFile).replace($find2, $replace2) | Set-Content $programFile -Force
+$find3 = 'var connectionString = builder.Configuration[builder.Configuration["AZURE_SQL_IDENTITY_CONNECTION_STRING_KEY"] ?? ""];'
+$replace3 = 'var connectionString = builder.Configuration["ConnectionStrings:IdentityConnection"] ?? "";'
+(Get-Content $programFile).replace($find3, $replace3) | Set-Content $programFile -Force
 
 #add exception to ManageController.cs
 $ManageControllerfile = 'C:\eshoponweb\eShopOnWeb-main\src\Web\Controllers\ManageController.cs'

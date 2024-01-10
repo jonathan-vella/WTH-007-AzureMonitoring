@@ -59,13 +59,24 @@ $proc = (Start-Process -FilePath $exeFileNetCore.Name.ToString() -ArgumentList (
 $proc | Wait-Process 
 #>
 
-Write-Debug -Message "about to install .NET Core Hosting 7.0.2..."
-# Install Microsoft .Net Core Hosting 7.0.2 (This replaces 6.0.8)
-$exeDotNetTemp = [System.IO.Path]::GetTempPath().ToString() + "dotnet-hosting-7.0.2-win.exe"
+# Install Microsoft .Net Core 7.0.2
+# Write-Debug -Message "about to install .NET Core Hosting 7.0.2..."
+# $exeDotNetTemp = [System.IO.Path]::GetTempPath().ToString() + "dotnet-hosting-7.0.2-win.exe"
+# if (Test-Path $exeDotNetTemp) { Remove-Item $exeDotNetTemp -Force }
+# # Download file from Microsoft Downloads and save to local temp file (%LocalAppData%/Temp/2)
+# $exeFileNetCore = [System.IO.Path]::GetTempFileName() | Rename-Item -NewName "dotnet-hosting-7.0.2-win.exe" -PassThru
+# Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/c8b4d4c4-1f74-4533-80a1-c5813500c7a1/e6d2d78c0fba3744390952fd2ccad7d8/dotnet-hosting-7.0.2-win.exe" -OutFile $exeFileNetCore
+# # Run the exe with arguments
+# $proc = (Start-Process -FilePath $exeFileNetCore.Name.ToString() -ArgumentList ('/install','/quiet') -WorkingDirectory $exeFileNetCore.Directory.ToString() -Passthru)
+# $proc | Wait-Process 
+
+# Install Microsoft .Net Core 8.0.0
+Write-Debug -Message "about to install .NET Core Hosting 8.0.0..."
+$exeDotNetTemp = [System.IO.Path]::GetTempPath().ToString() + "dotnet-hosting-8.0.0-win.exe"
 if (Test-Path $exeDotNetTemp) { Remove-Item $exeDotNetTemp -Force }
 # Download file from Microsoft Downloads and save to local temp file (%LocalAppData%/Temp/2)
-$exeFileNetCore = [System.IO.Path]::GetTempFileName() | Rename-Item -NewName "dotnet-hosting-7.0.2-win.exe" -PassThru
-Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/c8b4d4c4-1f74-4533-80a1-c5813500c7a1/e6d2d78c0fba3744390952fd2ccad7d8/dotnet-hosting-7.0.2-win.exe" -OutFile $exeFileNetCore
+$exeFileNetCore = [System.IO.Path]::GetTempFileName() | Rename-Item -NewName "dotnet-hosting-8.0.0-win.exe" -PassThru
+Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/2a7ae819-fbc4-4611-a1ba-f3b072d4ea25/32f3b931550f7b315d9827d564202eeb/dotnet-hosting-8.0.0-win.exe" -OutFile $exeFileNetCore
 # Run the exe with arguments
 $proc = (Start-Process -FilePath $exeFileNetCore.Name.ToString() -ArgumentList ('/install','/quiet') -WorkingDirectory $exeFileNetCore.Directory.ToString() -Passthru)
 $proc | Wait-Process 
