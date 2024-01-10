@@ -25,7 +25,7 @@ resource nsgDiags 'Microsoft.Insights/diagnosticSettings@2017-05-01-preview' = [
         category: 'NetworkSecurityGroupEvent'
         enabled: true
         retentionPolicy: {
-          days: 31
+          days: 0
           enabled: true
         }
       }
@@ -33,7 +33,7 @@ resource nsgDiags 'Microsoft.Insights/diagnosticSettings@2017-05-01-preview' = [
         category: 'NetworkSecurityGroupRuleCounter'
         enabled: true
         retentionPolicy: {
-          days: 31
+          days: 0
           enabled: true
         }
       }
