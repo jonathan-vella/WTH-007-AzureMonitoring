@@ -4,7 +4,7 @@
 
 ## Introduction
 
-After deploying your initial solution for eShopOnWeb, you want to make sure that the telemetry is collected from the VMs deployed and display the results on a dashboard for visualization and alerting purposes. By default Azure Monitoring collects only host-level metrics - like CPU utilization, disk and network usage - for all virtual machines and virtual machine scale sets without any additional software. For more insight into your virtual machines, you can collect guest-level log and performance data using the Azure Monitor Agent.
+Once you have implemented your initial solution for eShopOnWeb, it’s essential to ensure telemetry collection from the deployed VMs for visualization and alerting on a dashboard. By default, Azure Monitoring gathers host-level metrics such as CPU usage, disk, and network activity for all VMs and VM scale sets without extra software. To gain deeper insights into your VMs, guest-level logs and performance data can be collected using the Azure Monitor Agent.
 
 To accomplish this task, you will need to understand the concept of metrics and logs, how to collect them into Azure Monitor, how to configure different types of alerts, and display results in an Azure Dashboard.  
 

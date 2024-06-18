@@ -6,21 +6,15 @@
 
 You have been contracted to deploy, monitor and manage an online shopping website in Azure for a start-up company called "eShopOnWeb".  
 
-After evaluating the requirements, your team has provided you with a set of Azure Bicep templates and scripts that will deploy the "eShopOnWeb" application and its underlying infrastructure resources into Azure. The Azure environment consists of a VNet, subnets, NSG(s), LoadBalancer(s), NAT rules, a SQL Server VM, a Visual Studio VM, a VM scale set, and an AKS cluster.
+After evaluating the requirements, your team has provided you with a set of Azure Bicep templates and scripts that will deploy the "eShopOnWeb" application and its underlying infrastructure resources into Azure. The Azure environment consists of a VNet, subnets, NSG(s), LoadBalancer(s), NAT rules, a SQL Server VM, a Visual Studio VM, a VM scale set, and an AKS cluster. The architecture diagram for this workload can be located in one of the subsequent sections below.
 
-Upon successful testing, you present your deployment solution to the company's leadership for approval along with Azure CLI, PowerShell, and Azure Cloud Shell options for quick deployment. 
-
-They were very excited about how quickly your team was able to create a deployment solution, and give you the green light to proceed.
+Upon successful testing, you present your deployment solution to the company's leadership for approval along with Azure CLI, PowerShell, and Azure Cloud Shell options for quick deployment.  They were very excited about how quickly your team was able to create a deployment solution, and give you the green light to proceed.
 
 Your job will be to use Azure Monitoring to configure the eShopOnWeb solution to be monitored so you can demonstrate to the company's leadership team that you can effectively manage it.
 
 ## Prerequisites
 
-You will need an Azure Subscription with the "Contributor" role assigned to deploy the eShopOnWeb Azure environment at the subscription scope.
-
-You can complete this entire hack in a web browser using the [Azure Portal](https://portal.azure.com) and [Azure Cloud Shell](https://shell.azure.com). 
-
-However, if you work with Azure and on a regular basis, these are tools you should consider having installed on your local workstation:
+You will need an Azure Subscription with the "Contributor" role assigned to deploy the eShopOnWeb Azure environment at the subscription scope. You can complete this entire hack in a web browser using the [Azure Portal](https://portal.azure.com) and [Azure Cloud Shell](https://shell.azure.com). However, if you work with Azure and on a regular basis, these are tools you should consider having installed on your local workstation:
 
 - [Azure Subscription](../../000-HowToHack/WTH-Common-Prerequisites.md#azure-subscription)
 - [Windows Subsystem for Linux](../../000-HowToHack/WTH-Common-Prerequisites.md#windows-subsystem-for-linux)
