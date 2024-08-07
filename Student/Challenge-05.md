@@ -35,13 +35,32 @@ The eShopOnWeb application is exposed to the Internet with an external IP addres
 
 ### Observe eShopOnWeb with Container Insights
 
-- From Azure Monitor, view the CPU and memory usage of the containers running the eShopOnWeb application
+In this challenge you will learn how to:
+
+- View application logs and troubleshoot errors
+- View performance metrics and identity bottlenecks
+- Find the logs for your application’s containers, using:
+    - **Azure Monitor for Containers**
+    - **Kubernetes Dashboard**
+    - **kubectl**
+
+- Notice how you can check the logs of any of your pods individually:
+    - `kubectl logs <pod-name>`
+    - Check the logs of the frontend and backend containers running in the eShopOnWeb application.
+    - Start a bash shell into one of the containers running on a pod and check the list of running processes
+    - Find out if your pods had any errors.
+    - Figure out how to get details on a running pod to see reasons for failures.
+
 - Generate and view an exception in the eShopOnWeb application.
     - **HINT:** Try to change your password within the application.
 
 ## Success Criteria
-- Verify you are able to see the exception in Application Insights.
+- Enable “Azure Monitor for Containers” on the AKS cluster
+- Show a screenshot of CPU and memory utilization of all nodes
+- Show a screenshot displaying logs from the frontend and backend containers
 - Verify you can you see the container insights live logs.
+- From Azure Monitor, view the CPU and memory usage of the containers running the eShopOnWeb application
+- Verify you are able to see the exception in Application Insights.
 
 ## Learning Resources
 
