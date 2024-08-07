@@ -18,13 +18,14 @@ In this challenge you need to complete the following management tasks:
 - Explore VM Insights workbooks, determine how much free disk space is left for the SQL Server VM.
 - For the SQL Server VM pin the Available Memory chart from the VM Insights workbook to your Azure dashboard.
 
-Bonus task:
+Governance-driven monitoring:
 - Set up Azure Policy to automatically enable VM Insights on VMs and VM Scale Sets within the scope of the main hackathon Resource Group `xxx-rg-wth-monitor-d-xx`. 
 >**Note** Azure Policy lets you set and enforce requirements for all new resources you create and resources you modify. To remediate already existing resources, you need to run a remediation task after resource compliance status is available (this can take from several minutes to several hours. There's no pre-defined expectation of when the compliance evaluation cycle completes).
 
 ## Success Criteria
 
 - Demonstrate that VM Insights is enabled for the SQL Server VM.
+- Demonstrate the use of Azure Policy to onboard VMs at scale.
 - Show your Azure dashboard with VM Insights performance chart.
 
 ## Learning Resources
