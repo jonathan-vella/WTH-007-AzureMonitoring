@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # what's the url?
-declare myUrl="http://mon19webscalesetlb.eastus.cloudapp.azure.com"
+declare myUrl="http://wthxcyxgr2apuyfc.northeurope.cloudapp.azure.com"
 # how many times are we hitting it?
 declare numberOfHits=100
 
