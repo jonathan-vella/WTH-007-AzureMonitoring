@@ -68,3 +68,7 @@ In this challenge you will learn how to:
 - [Install the Kubernetes CLI, `kubectl`, using PowerShell](https://learn.microsoft.com/en-us/powershell/module/az.aks/install-azaksclitool?view=azps-10.2.0)
 - [Azure Container Monitoring](https://docs.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview)
 - [How to set up the Live Data feature](https://docs.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-livedata-setup)
+[Kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+
+[< Previous Challenge](./Challenge-04.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-06.md)
+```
