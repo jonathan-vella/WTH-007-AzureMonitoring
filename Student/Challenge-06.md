@@ -72,3 +72,8 @@ How can we save our log queries and share them across multiple workspaces?
 * [Query operators](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/queries/)
 * [Application Insights telemetry data model](https://learn.microsoft.com/en-us/azure/azure-monitor/app/data-model-complete)
 * [Query Packs](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/query-packs)
+* [Azure Monitor GitHub Repository](https://github.com/microsoft/AzureMonitorCommunity)
+
+[< Previous Challenge](./Challenge-05.md) - **[Home](../README.md)** - [Next Challenge >](./Challenge-07.md)
+```
+
